@@ -1,0 +1,14 @@
+{
+  "name": "molecule-singleton",
+  "version": "1.0.0",
+  "description": "A singleton pattern built on moleculejs",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Matt Hackmann",
+  "license": "WTFPL",
+  "dependencies": {
+    "moleculejs": "^1.0.0"
+  }
+}
