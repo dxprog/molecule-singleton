@@ -1,4 +1,4 @@
-import Molecule from 'molecule';
+import Molecule from 'moleculejs';
 
 const globalScope = global || window;
 

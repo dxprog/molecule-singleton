@@ -5,9 +5,6 @@ module.exports = function(grunt) {
       options: {
         transform: [
           [ 'babelify', { presets: 'es2015' } ]
-        ],
-        require: [
-            './node_modules/moleculejs/src/molecule.js:molecule'
         ]
       },
       dist: {

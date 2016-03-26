@@ -1,4 +1,4 @@
-import Molecule from 'molecule';
+import Molecule from 'moleculejs';
 import expect from 'expect.js';
 
 import Singleton from '../index';
