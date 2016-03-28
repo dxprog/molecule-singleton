@@ -15,6 +15,18 @@ describe('Singleton tests', function() {
     expect(instance.method).to.be.a('function');
   });
 
+  it('should throw when no arguments are passed', function() {
+    expect(() => {
+      Singleton();
+    }).to.throwException('A singleton name and class definition must be provided');
+  });
+
+  it('should throw when trying to retrieve an undefined class', function() {
+    expect(() => {
+      Singleton('thing');
+    }).to.throwException('Trying to fetch singleton "thing" that has not been defined');
+  });
+
   it('should return an instance if one has already been created', function() {
     const singletonName = 'anotherObject';
     let instance = Singleton(singletonName, {

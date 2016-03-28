@@ -10,15 +10,22 @@ if (!globalScope._singletons) {
 }
 
 module.exports = function Singleton(name, classDefinition) {
-  let retVal = globalScope._singletons[name];
+  if (!name) {
+    throw new Error('A singleton name and class definition must be provided');
+  }
 
-  if (!retVal && (typeof classDefinition === 'object' || classDefinition._isMolecule)) {
-    // If the passed definition is a Molecule already, just instantiate that
-    // Otherwise, create a new one
-    if (classDefinition._isMolecule) {
-      retVal = globalScope._singletons[name] = new classDefinition();
+  let retVal = globalScope._singletons[name];
+  if (!retVal) {
+    if (!!classDefinition && (typeof classDefinition === 'object' || classDefinition._isMolecule)) {
+      // If the passed definition is a Molecule already, just instantiate that
+      // Otherwise, create a new one
+      if (classDefinition._isMolecule) {
+        retVal = globalScope._singletons[name] = new classDefinition();
+      } else {
+        retVal = globalScope._singletons[name] = new (Molecule(classDefinition));
+      }
     } else {
-      retVal = globalScope._singletons[name] = new (Molecule(classDefinition));
+      throw new Error('Trying to fetch singleton "' + name + '" that has not been defined');
     }
   }
 
