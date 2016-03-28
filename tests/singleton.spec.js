@@ -1,7 +1,9 @@
-import Molecule from 'moleculejs';
-import expect from 'expect.js';
+'use strict';
 
-import Singleton from '../index';
+const Molecule = require('moleculejs');
+const expect = require('expect.js');
+
+const Singleton = require('../index');
 
 describe('Singleton tests', function() {
 

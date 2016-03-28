@@ -1,12 +1,15 @@
-import Molecule from 'moleculejs';
+'use strict';
 
+const Molecule = require('moleculejs');
+
+// For node or browser
 const globalScope = global || window;
 
 if (!globalScope._singletons) {
   globalScope._singletons = {};
 }
 
-export default function Singleton(name, classDefinition) {
+module.exports = function Singleton(name, classDefinition) {
   let retVal = globalScope._singletons[name];
 
   if (!retVal && (typeof classDefinition === 'object' || classDefinition._isMolecule)) {
