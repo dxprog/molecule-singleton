@@ -1,39 +1,39 @@
 'use strict';
 
-const Molecule = require('moleculejs');
-const expect = require('expect.js');
+var Molecule = require('moleculejs');
+var expect = require('expect.js');
 
-const Singleton = require('../index');
+var Singleton = require('../index');
 
 describe('Singleton tests', function() {
 
   it('should create an instantiated Molecule object', function() {
-    let instance = Singleton('myObject', {
-      method() {}
+    var instance = Singleton('myObject', {
+      method: function() {}
     });
     expect(instance).to.be.an('object');
     expect(instance.method).to.be.a('function');
   });
 
   it('should throw when no arguments are passed', function() {
-    expect(() => {
+    expect(function() {
       Singleton();
     }).to.throwException('A singleton name and class definition must be provided');
   });
 
   it('should throw when trying to retrieve an undefined class', function() {
-    expect(() => {
+    expect(function() {
       Singleton('thing');
     }).to.throwException('Trying to fetch singleton "thing" that has not been defined');
   });
 
   it('should return an instance if one has already been created', function() {
-    const singletonName = 'anotherObject';
-    let instance = Singleton(singletonName, {
-      setValue(val) {
+    var singletonName = 'anotherObject';
+    var instance = Singleton(singletonName, {
+      setValue: function(val) {
         this.value = val;
       },
-      getValue() {
+      getValue: function() {
         return this.value;
       }
     });
@@ -43,13 +43,13 @@ describe('Singleton tests', function() {
   });
 
   it('should instantiate a Molecule if one was passed', function() {
-    const TEST_FOR_TRUTH = 'row row fight the powah';
-    const myClass = Molecule({
-      someValue() {
+    var TEST_FOR_TRUTH = 'row row fight the powah';
+    var myClass = Molecule({
+      someValue: function() {
         return TEST_FOR_TRUTH;
       }
     });
-    let instance = Singleton('moleculeSingleton', myClass);
+    var instance = Singleton('moleculeSingleton', myClass);
     expect(instance.someValue()).to.equal(TEST_FOR_TRUTH);
   });
 
