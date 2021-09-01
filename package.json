@@ -6,6 +6,10 @@
   "scripts": {
     "test": "mocha tests/"
   },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/dxprog/molecule-singleton.git"
+  },
   "author": "Matt Hackmann",
   "license": "WTFPL",
   "dependencies": {
